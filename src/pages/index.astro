@@ -1,6 +1,43 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { creneaux, groupByJour } from '../data/planning';
+
+const dernieresActus = (await getCollection('actualites'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const planningParJour = groupByJour(creneaux);
 ---
 <BaseLayout title="Accueil">
-  <h1>Site en construction</h1>
+  <section class="hero">
+    <h1>Dojo Kyokushin + Jujutsu Eskrima</h1>
+    <p>Arts martiaux traditionnels japonais et philippins, pour adultes et enfants.</p>
+    <a class="cta" href="/contact">Essai gratuit</a>
+  </section>
+
+  <section class="horaires-resume">
+    <h2>Horaires</h2>
+    <ul>
+      {Object.entries(planningParJour).map(([jour, creneauxDuJour]) => (
+        <li>
+          <strong>{jour}</strong> :
+          {creneauxDuJour.map((c) => `${c.cours} ${c.heureDebut}-${c.heureFin}`).join(', ')}
+        </li>
+      ))}
+    </ul>
+    <a href="/planning">Voir le planning complet</a>
+  </section>
+
+  <section class="dernieres-actus">
+    <h2>Actualités récentes</h2>
+    <ul>
+      {dernieresActus.map((actu) => (
+        <li>
+          <a href={`/actualites/${actu.id}`}>{actu.data.title}</a>
+        </li>
+      ))}
+    </ul>
+    <a href="/actualites">Voir toutes les actualités</a>
+  </section>
 </BaseLayout>
