@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// À remplacer par les coordonnées définitives du dojo.
+const email = 'contact@example.fr';
+const telephone = '00 00 00 00 00';
+const adresse = 'Adresse à compléter';
+---
+<BaseLayout title="Contact">
+  <h1>Contact</h1>
+  <p>{adresse}</p>
+  <p>Téléphone : {telephone}</p>
+  <p>
+    Email : <a href={`mailto:${email}`}>{email}</a>
+  </p>
+  <p>
+    Envie d'essayer un cours ? Écrivez-nous par email, nous vous
+    répondrons avec les modalités du cours d'essai gratuit.
+  </p>
+</BaseLayout>
