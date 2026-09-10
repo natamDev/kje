@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const resultats = (await getCollection('resultats'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<BaseLayout title="Résultats">
+  <h1>Résultats de compétitions</h1>
+  <ul>
+    {resultats.map((r) => (
+      <li>
+        <strong>{r.data.competition}</strong> ({r.data.date.toLocaleDateString('fr-FR')}) —
+        {r.data.eleves.join(', ')} : {r.data.resultat}
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
