@@ -1,0 +1,21 @@
+---
+const links = [
+  { href: '/', label: 'Accueil' },
+  { href: '/dojo', label: 'Le dojo' },
+  { href: '/planning', label: 'Planning' },
+  { href: '/actualites', label: 'Actualités' },
+  { href: '/galerie', label: 'Galerie' },
+  { href: '/resultats', label: 'Résultats' },
+  { href: '/tarifs', label: 'Tarifs' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+<header>
+  <nav>
+    <ul>
+      {links.map((link) => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+    </ul>
+  </nav>
+</header>
