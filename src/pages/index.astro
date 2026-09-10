@@ -34,7 +34,7 @@ const planningParJour = groupByJour(creneaux);
     <ul>
       {dernieresActus.map((actu) => (
         <li>
-          <a href={`/actualites/${actu.id}`}>{actu.data.title}</a>
+          <a href={`/actualites/${actu.slug}`}>{actu.data.title}</a>
         </li>
       ))}
     </ul>
