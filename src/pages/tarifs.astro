@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { tarifs, formatPrix } from '../data/tarifs';
+---
+<BaseLayout title="Tarifs">
+  <h1>Tarifs</h1>
+  <table>
+    <thead>
+      <tr><th>Formule</th><th>Prix</th><th>Période</th></tr>
+    </thead>
+    <tbody>
+      {tarifs.map((t) => (
+        <tr>
+          <td>{t.label}</td>
+          <td>{formatPrix(t.prixCentimes)}</td>
+          <td>{t.periode}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</BaseLayout>
