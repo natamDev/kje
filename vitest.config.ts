@@ -10,12 +10,18 @@ async function configWrapper(env) {
   try {
     const result = await astroViteConfigFn(env);
 
-    // Workaround for Astro 5.0 + Vitest 2.1.0 compatibility:
-    // Vitest cannot properly initialize getViteConfig's async function without
-    // triggering access to the plugins array. Simply accessing and re-mapping
-    // the plugins triggers Vite's plugin system to properly initialize.
-    // This appears to be a race condition or initialization order issue in how
-    // Vitest loads and processes the config from an async function.
+    // This async wrapper is empirically required: removing it (i.e. using a plain
+    // `export default astroViteConfigFn;`, or even a bare async passthrough with
+    // no plugin remapping) reproducibly breaks `npm test` with an opaque,
+    // cross-process-swallowed error (an AggregateError containing the string
+    // '[object Object]', traced to tinypool's error propagation, which runs
+    // before Vitest's own error serialization). The plugin remapping below does
+    // NOT explain why this works: it executes after `astroViteConfigFn(env)` has
+    // already fully resolved, so it cannot retroactively fix an async
+    // initialization race inside that call. The true root cause is unidentified.
+    // Treat this as a load-bearing but unexplained workaround — do not remove
+    // it without first reproducing the failure above, and do not reuse this
+    // shape elsewhere assuming the stated mechanism is real.
     if (result.plugins && Array.isArray(result.plugins)) {
       result.plugins = result.plugins.map((plugin, index) => {
         try {
