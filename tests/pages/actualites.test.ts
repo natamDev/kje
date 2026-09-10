@@ -1,10 +1,5 @@
-import { execSync } from 'node:child_process';
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { readDistHtml } from '../helpers/dist';
-
-beforeAll(() => {
-  execSync('npm run build', { stdio: 'inherit' });
-}, 60_000);
 
 describe('actualités', () => {
   it('liste les actualités avec un lien vers le détail', () => {
