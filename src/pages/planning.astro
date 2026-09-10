@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { creneaux, groupByJour } from '../data/planning';
+
+const planningParJour = groupByJour(creneaux);
+---
+<BaseLayout title="Planning">
+  <h1>Planning des cours</h1>
+  {Object.entries(planningParJour).map(([jour, creneauxDuJour]) => (
+    <section>
+      <h2>{jour}</h2>
+      <ul>
+        {creneauxDuJour.map((c) => (
+          <li>{c.heureDebut}–{c.heureFin} · {c.cours} ({c.niveau})</li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</BaseLayout>
