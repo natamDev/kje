@@ -1,3 +1,4 @@
+// Données d'exemple — à remplacer avant mise en ligne par les vraies valeurs du club.
 export interface Tarif {
   label: string;
   prixCentimes: number;

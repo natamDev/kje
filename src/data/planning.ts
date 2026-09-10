@@ -1,3 +1,4 @@
+// Données d'exemple — à remplacer avant mise en ligne par les vraies valeurs du club.
 export interface Creneau {
   jour: 'Lundi' | 'Mardi' | 'Mercredi' | 'Jeudi' | 'Vendredi' | 'Samedi' | 'Dimanche';
   heureDebut: string;

@@ -46,4 +46,9 @@ manuelle (voir le spec).
 - Textes définitifs : histoire du dojo, présentation des sensei
   (`src/pages/dojo.astro`), coordonnées de contact
   (`src/pages/contact.astro`)
+- `src/data/tarifs.ts` (tarifs réels)
+- `src/data/planning.ts` (horaires réels)
+- Supprimer ou remplacer les contenus d'exemple dans `src/content/actualites/`,
+  `src/content/resultats/`, `src/content/galerie/` (actualités, résultats et
+  photos fictifs utilisés comme exemples de mise en forme)
 - Nom de domaine définitif
