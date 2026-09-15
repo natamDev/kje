@@ -4,7 +4,10 @@ import { creneaux, groupByJour } from '../data/planning';
 
 const planningParJour = groupByJour(creneaux);
 ---
-<BaseLayout title="Planning">
+<BaseLayout
+  title="Planning"
+  description="Planning hebdomadaire des cours de Kyokushin et Jujutsu Eskrima, par jour et par niveau."
+>
   <h1>Planning des cours</h1>
   {Object.entries(planningParJour).map(([jour, creneauxDuJour]) => (
     <section>

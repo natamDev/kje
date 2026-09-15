@@ -5,7 +5,10 @@ import { getCollection } from 'astro:content';
 const entrees = (await getCollection('galerie'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
-<BaseLayout title="Galerie">
+<BaseLayout
+  title="Galerie"
+  description="Photos et vidéos des événements et entraînements du dojo."
+>
   <h1>Galerie</h1>
   {entrees.map((entree) => (
     <section>

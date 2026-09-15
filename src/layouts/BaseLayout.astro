@@ -1,17 +1,43 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import '../styles/global.css';
 
 export interface Props {
   title: string;
+  description?: string;
 }
-const { title } = Astro.props;
+
+const {
+  title,
+  description = 'Dojo Kyokushin et Jujutsu Eskrima : cours d’arts martiaux pour enfants et adultes, planning, actualités et résultats du club.',
+} = Astro.props;
+
+const pageTitle = `${title} — Dojo Kyokushin + Jujutsu Eskrima`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} — Dojo Kyokushin + Jujutsu Eskrima</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'LocalBusiness',
+      name: 'Dojo Kyokushin + Jujutsu Eskrima',
+      description,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Adresse à compléter',
+      },
+      telephone: '00 00 00 00 00',
+    })} />
+    <title>{pageTitle}</title>
   </head>
   <body>
     <Header />

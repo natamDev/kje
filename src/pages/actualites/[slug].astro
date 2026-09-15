@@ -13,7 +13,10 @@ export async function getStaticPaths() {
 const { actu } = Astro.props;
 const { Content } = await render(actu);
 ---
-<BaseLayout title={actu.data.title}>
+<BaseLayout
+  title={actu.data.title}
+  description={`Actualité du dojo : ${actu.data.title}.`}
+>
   <h1>{actu.data.title}</h1>
   <p>{actu.data.date.toLocaleDateString('fr-FR')}</p>
   <Content />

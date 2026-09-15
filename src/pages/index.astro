@@ -9,7 +9,10 @@ const dernieresActus = (await getCollection('actualites'))
 
 const planningParJour = groupByJour(creneaux);
 ---
-<BaseLayout title="Accueil">
+<BaseLayout
+  title="Accueil"
+  description="Dojo Kyokushin et Jujutsu Eskrima : essai gratuit, planning des cours, actualités et résultats de compétition."
+>
   <section class="hero">
     <h1>Dojo Kyokushin + Jujutsu Eskrima</h1>
     <p>Arts martiaux traditionnels japonais et philippins, pour adultes et enfants.</p>
