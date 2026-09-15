@@ -8,3 +8,7 @@ export function readDistHtml(routePath: string): string {
     : path.join('dist', normalized, 'index.html');
   return readFileSync(filePath, 'utf-8');
 }
+
+export function readDistFile(relativePath: string): string {
+  return readFileSync(path.join('dist', relativePath), 'utf-8');
+}
