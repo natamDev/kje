@@ -8,6 +8,11 @@ describe("page d'accueil", () => {
     expect(html).toContain('Essai gratuit');
   });
 
+  it("affiche l'ours en image hero", () => {
+    const html = readDistHtml('/');
+    expect(html).toMatch(/<section class="hero">[\s\S]*<img[^>]*src="\/ours-montagne\.png"/);
+  });
+
   it("affiche un résumé des horaires avec un lien vers le planning complet", () => {
     const html = readDistHtml('/');
     expect(html).toContain('Lundi');
