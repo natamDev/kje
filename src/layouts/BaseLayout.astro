@@ -15,6 +15,7 @@ const {
 
 const pageTitle = `${title} — Dojo Kyokushin + Jujutsu Eskrima`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL('/logo.jpg', Astro.site);
 ---
 <html lang="fr">
   <head>
@@ -22,15 +23,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/png" href="/symbole_rouge_centre.png" />
+    <link rel="apple-touch-icon" href="/symbole_rouge_centre.png" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
       name: 'Dojo Kyokushin + Jujutsu Eskrima',
       description,
+      image: ogImageURL,
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Adresse à compléter',

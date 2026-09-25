@@ -26,15 +26,40 @@ header {
   background: var(--color-dark);
 }
 
+header .header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: var(--max-width);
+  padding: 1rem;
+  margin-inline: auto;
+}
+
+header .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+header .brand img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
 header nav ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   margin: 0;
-  padding: 1rem;
-  max-width: var(--max-width);
-  margin-inline: auto;
+  padding: 0;
 }
 
 header nav a {
@@ -100,6 +125,24 @@ td {
   border: 1px solid var(--color-border);
   padding: 0.5rem 0.75rem;
   text-align: left;
+}
+
+.nos-styles {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.nos-styles .styles-emblem {
+  width: 100px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.nos-styles > div {
+  flex: 1;
+  min-width: 240px;
 }
 
 .medias {
