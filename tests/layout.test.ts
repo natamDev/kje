@@ -19,4 +19,9 @@ describe('navigation commune', () => {
       expect(html).toContain(label);
     }
   });
+
+  it('affiche le logo noir dans le header', () => {
+    const html = readDistHtml('/');
+    expect(html).toMatch(/<header>[\s\S]*<img[^>]*src="\/logo-noir-96\.png"[\s\S]*<\/header>/);
+  });
 });
