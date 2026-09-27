@@ -20,7 +20,7 @@ describe('sitemap.xml', () => {
       expect(content).toContain(`<loc>https://example.com${page}</loc>`);
     }
 
-    expect(content).toContain('<loc>https://example.com/actualites/2026-02-20-stage-kyokushin</loc>');
-    expect(content).toContain('<loc>https://example.com/actualites/2026-01-15-portes-ouvertes</loc>');
+    expect(content).toContain('<loc>https://example.com/actualites/2026-09-16-remise-des-ceintures</loc>');
+    expect(content).toContain('<loc>https://example.com/actualites/2026-09-05-forum-des-associations</loc>');
   });
 });

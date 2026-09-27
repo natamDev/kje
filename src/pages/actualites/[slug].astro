@@ -12,12 +12,33 @@ export async function getStaticPaths() {
 
 const { actu } = Astro.props;
 const { Content } = await render(actu);
+const { title, date, medias = [], video } = actu.data;
 ---
 <BaseLayout
-  title={actu.data.title}
-  description={`Actualité du dojo : ${actu.data.title}.`}
+  title={title}
+  description={`Actualité du dojo : ${title}.`}
 >
-  <h1>{actu.data.title}</h1>
-  <p>{actu.data.date.toLocaleDateString('fr-FR')}</p>
-  <Content />
+  <article class="actu">
+    <p class="discret">{date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+    <h1>{title}</h1>
+    <Content />
+
+    {video && (
+      <video class="actu-video" controls preload="metadata" poster={medias[0]}>
+        <source src={video} type="video/mp4" />
+      </video>
+    )}
+
+    {medias.length > 0 && (
+      <div class="medias">
+        {medias.map((src, i) => (
+          <a href={src}>
+            <img src={src} alt={`${title} — photo ${i + 1}`} loading="lazy" />
+          </a>
+        ))}
+      </div>
+    )}
+
+    <p><a class="lien-souligne" href="/actualites">Toutes les actualités</a></p>
+  </article>
 </BaseLayout>

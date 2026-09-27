@@ -36,8 +36,8 @@ describe("page d'accueil", () => {
 
   it("affiche les dernières actualités", () => {
     const html = readDistHtml('/');
-    expect(html).toContain('Stage de Kyokushin');
-    expect(html).toContain('Journée portes ouvertes');
+    expect(html).toContain('Remise des ceintures');
+    expect(html).toContain('Forum des associations sportives');
   });
 
   it("intègre la vidéo de présentation du dojo (sans cookies) avec son crédit", () => {

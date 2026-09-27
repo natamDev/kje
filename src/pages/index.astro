@@ -106,6 +106,9 @@ const planningParJour = groupByJour(creneaux);
       {dernieresActus.map((actu) => (
         <li>
           <a href={`/actualites/${actu.slug}`}>
+            {actu.data.coverImage && (
+              <img class="carte-image" src={actu.data.coverImage} alt="" loading="lazy" />
+            )}
             <span class="discret">{actu.data.date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
             <span class="carte-titre">{actu.data.title}</span>
           </a>
