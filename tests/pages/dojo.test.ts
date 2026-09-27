@@ -5,7 +5,8 @@ describe('page le dojo', () => {
   it('présente les deux styles pratiqués', () => {
     const html = readDistHtml('/dojo');
     expect(html).toContain('Kyokushin');
-    expect(html).toContain('Jujutsu Eskrima');
+    expect(html).toContain('Jutsu Eskrima');
+    expect(html).not.toContain('Jujutsu Eskrima');
   });
 });
 

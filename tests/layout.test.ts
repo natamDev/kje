@@ -81,3 +81,11 @@ describe('menu mobile', () => {
     expect(html).toMatch(/<button[^>]*class="menu-toggle"[^>]*hidden/);
   });
 });
+
+describe('nom du style', () => {
+  it('écrit « Jutsu Eskrima » et jamais « Jujutsu Eskrima »', () => {
+    for (const page of ['/', '/dojo', '/planning', '/tarifs', '/contact']) {
+      expect(readDistHtml(page)).not.toContain('Jujutsu Eskrima');
+    }
+  });
+});
