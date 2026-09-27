@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { readDistHtml } from './helpers/dist';
 
@@ -9,8 +10,6 @@ describe('navigation commune', () => {
       ['/dojo', 'Le dojo'],
       ['/planning', 'Planning'],
       ['/actualites', 'Actualités'],
-      ['/galerie', 'Galerie'],
-      ['/resultats', 'Résultats'],
       ['/tarifs', 'Tarifs'],
       ['/contact', 'Contact'],
     ];
@@ -18,6 +17,14 @@ describe('navigation commune', () => {
       expect(html).toContain(`href="${href}"`);
       expect(html).toContain(label);
     }
+  });
+
+  it('ne propose plus les pages Galerie et Résultats', () => {
+    const html = readDistHtml('/');
+    expect(html).not.toContain('href="/galerie"');
+    expect(html).not.toContain('href="/resultats"');
+    expect(existsSync('dist/galerie')).toBe(false);
+    expect(existsSync('dist/resultats')).toBe(false);
   });
 
   it('affiche le logo rond dans le header', () => {

@@ -10,8 +10,6 @@ describe('sitemap.xml', () => {
       '/dojo',
       '/planning',
       '/actualites',
-      '/galerie',
-      '/resultats',
       '/tarifs',
       '/contact',
       '/mentions-legales',
@@ -20,6 +18,8 @@ describe('sitemap.xml', () => {
       expect(content).toContain(`<loc>https://example.com${page}</loc>`);
     }
 
+    expect(content).not.toContain('/galerie');
+    expect(content).not.toContain('/resultats');
     expect(content).toContain('<loc>https://example.com/actualites/2026-09-16-remise-des-ceintures</loc>');
     expect(content).toContain('<loc>https://example.com/actualites/2026-09-05-forum-des-associations</loc>');
   });

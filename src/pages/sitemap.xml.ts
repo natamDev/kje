@@ -6,8 +6,6 @@ const staticRoutes = [
   '/dojo',
   '/planning',
   '/actualites',
-  '/galerie',
-  '/resultats',
   '/tarifs',
   '/contact',
   '/mentions-legales',

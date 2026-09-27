@@ -44,10 +44,5 @@ En cas de changement d'hébergeur, mettre aussi à jour `hebergeur` dans
 
 ## Contenu à fournir avant mise en ligne
 
-- Photos de la galerie (remplacer `public/images/galerie/placeholder.svg`)
-- Textes définitifs : histoire du dojo, présentation des sensei
-  (`src/pages/dojo.astro`)
-- Supprimer ou remplacer les contenus d'exemple dans `src/content/actualites/`,
-  `src/content/resultats/`, `src/content/galerie/` (actualités, résultats et
-  photos fictifs utilisés comme exemples de mise en forme)
+- Texte définitif : histoire du dojo (`src/pages/dojo.astro`)
 - Nom de domaine définitif
