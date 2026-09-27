@@ -54,7 +54,8 @@ const ogImageURL = new URL('/logo.jpg', Astro.site);
         addressLocality: club.adresse.ville,
         addressCountry: club.adresse.pays,
       },
-      telephone: club.telephone,
+      telephone: club.telephoneInternational,
+      email: club.email,
     })} />
     <title>{pageTitle}</title>
   </head>

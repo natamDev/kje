@@ -31,21 +31,22 @@ pour chaque page. Il n'y a pas de tests unitaires exhaustifs page par page :
 la vérification principale reste le build réussi et une revue visuelle
 manuelle (voir le spec).
 
-## Déploiement (Cloudflare Pages)
+## Déploiement (Netlify)
 
-1. Connecter ce dépôt Git à un nouveau projet Cloudflare Pages.
+1. Connecter ce dépôt Git à un nouveau site Netlify.
 2. Build command : `npm run build`
-3. Output directory : `dist`
+3. Publish directory : `dist`
 4. Une fois le nom de domaine définitif choisi, le configurer dans
-   Cloudflare Pages et mettre à jour `site` dans `astro.config.mjs`.
+   Netlify et mettre à jour `site` dans `astro.config.mjs`.
+
+En cas de changement d'hébergeur, mettre aussi à jour `hebergeur` dans
+`src/data/club.ts` (affiché dans les mentions légales).
 
 ## Contenu à fournir avant mise en ligne
 
-- Logo du club (à intégrer dans `public/` et le `Header`)
 - Photos de la galerie (remplacer `public/images/galerie/placeholder.svg`)
 - Textes définitifs : histoire du dojo, présentation des sensei
-  (`src/pages/dojo.astro`), coordonnées de contact
-  (`src/pages/contact.astro`)
+  (`src/pages/dojo.astro`)
 - `src/data/tarifs.ts` (tarifs réels)
 - `src/data/planning.ts` (horaires réels)
 - Supprimer ou remplacer les contenus d'exemple dans `src/content/actualites/`,

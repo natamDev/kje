@@ -15,9 +15,15 @@ export const club = {
   },
   ficheOfficielle:
     'https://annuaire-entreprises.data.gouv.fr/entreprise/kyokushin-jutsu-escrima-aubagnais-538112566',
-  // À remplacer par les coordonnées définitives du dojo.
-  email: 'contact@example.fr',
-  telephone: '00 00 00 00 00',
+  email: 'kje.aubagne@gmail.com',
+  telephone: '06 21 48 20 29',
+  telephoneInternational: '+33621482029',
+  directeurPublication: 'Gérard Calenge',
+  hebergeur: {
+    nom: 'Netlify, Inc.',
+    adresse: '101 2nd Street, San Francisco, CA 94105, États-Unis',
+    site: 'https://www.netlify.com',
+  },
 };
 
 export const adresseComplete = `${club.adresse.rue}, ${club.adresse.codePostal} ${club.adresse.ville}`;

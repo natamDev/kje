@@ -12,3 +12,13 @@ describe('page mentions légales', () => {
     expect(html).toContain('href="https://annuaire-entreprises.data.gouv.fr/entreprise/kyokushin-jutsu-escrima-aubagnais-538112566"');
   });
 });
+
+describe('page mentions légales : publication et hébergement', () => {
+  it('indique le directeur de la publication et l’hébergeur Netlify', () => {
+    const html = readDistHtml('/mentions-legales');
+    expect(html).toContain('Gérard Calenge');
+    expect(html).toContain('Netlify, Inc.');
+    expect(html).toContain('101 2nd Street');
+    expect(html).not.toContain('À COMPLÉTER');
+  });
+});

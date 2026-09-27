@@ -30,7 +30,9 @@ const dateCreation = new Date(club.dateCreation).toLocaleDateString('fr-FR', {
       <dt>Date de création</dt>
       <dd>{dateCreation}</dd>
       <dt>Directeur de la publication</dt>
-      <dd>[À COMPLÉTER]</dd>
+      <dd>{club.directeurPublication}</dd>
+      <dt>Contact</dt>
+      <dd><a href={`mailto:${club.email}`}>{club.email}</a> · {club.telephone}</dd>
     </dl>
     <p>
       <a href={club.ficheOfficielle}>Fiche officielle de l'association sur l'Annuaire des Entreprises</a>
@@ -39,6 +41,9 @@ const dateCreation = new Date(club.dateCreation).toLocaleDateString('fr-FR', {
 
   <section>
     <h2>Hébergement</h2>
-    <p>[À COMPLÉTER : hébergeur du site, par exemple Cloudflare Pages, avec son adresse.]</p>
+    <p>
+      <a href={club.hebergeur.site}>{club.hebergeur.nom}</a><br />
+      {club.hebergeur.adresse}
+    </p>
   </section>
 </BaseLayout>

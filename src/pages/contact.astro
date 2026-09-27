@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { club } from '../data/club';
 
-const { email, telephone } = club;
+const { email, telephone, telephoneInternational } = club;
 ---
 <BaseLayout
   title="Contact"
@@ -13,7 +13,7 @@ const { email, telephone } = club;
     {club.adresse.rue}<br />
     {club.adresse.codePostal} {club.adresse.ville}
   </address>
-  <p>Téléphone : {telephone}</p>
+  <p>Téléphone : <a href={`tel:${telephoneInternational}`}>{telephone}</a></p>
   <p>
     Email : <a href={`mailto:${email}`}>{email}</a>
   </p>
