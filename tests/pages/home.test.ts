@@ -16,7 +16,7 @@ describe("page d'accueil", () => {
   it("affiche le kanji Kyokushin et le titre dans le hero", () => {
     const html = readDistHtml('/');
     expect(html).toMatch(/<section class="hero">[\s\S]*極真空手/);
-    expect(html).toMatch(/<h1[^>]*>La force tranquille de l'ours\.<\/h1>/);
+    expect(html).toMatch(/<h1[^>]*>Forge le corps\. Trempe l'esprit\.<\/h1>/);
     expect(html).toContain('depuis 1999');
   });
 
