@@ -21,7 +21,7 @@ describe('page contact : adresse', () => {
 describe('page contact : coordonnées', () => {
   it('affiche l’email et le téléphone du club', () => {
     const html = readDistHtml('/contact');
-    expect(html).toContain('href="mailto:kje.aubagne@gmail.com"');
+    expect(html).toContain('href="mailto:kje.aubagne13@gmail.com"');
     expect(html).toContain('href="tel:+33621482029"');
     expect(html).toContain('06 21 48 20 29');
   });

@@ -25,7 +25,7 @@ export const club = {
   rechercheCarte: 'Kyokushin Jutsu Eskrima Aubagne, 206 Chem. du Merlançon, Chem. du Qur des Vaux, 13400 Aubagne',
   ficheOfficielle:
     'https://annuaire-entreprises.data.gouv.fr/entreprise/kyokushin-jutsu-escrima-aubagnais-538112566',
-  email: 'kje.aubagne@gmail.com',
+  email: 'kje.aubagne13@gmail.com',
   telephone: '06 21 48 20 29',
   telephoneInternational: '+33621482029',
   directeurPublication: 'Gérard Calenge',
