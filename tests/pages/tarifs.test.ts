@@ -29,7 +29,7 @@ describe('page tarifs', () => {
     expect(html).toContain('Bas de kimono');
   });
 
-  it('précise les conditions : certificat médical et paiement en 3 fois', () => {
+  it('précise les conditions : certificat médical et paiement en 2 fois', () => {
     const html = readDistHtml('/tarifs');
     expect(html).toContain('Certificat médical obligatoire');
     expect(html).toContain('3 fois');
