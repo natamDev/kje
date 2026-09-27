@@ -23,8 +23,8 @@ describe('navigation commune', () => {
     const html = readDistHtml('/');
     expect(html).not.toContain('href="/galerie"');
     expect(html).not.toContain('href="/resultats"');
-    expect(existsSync('dist/galerie')).toBe(false);
-    expect(existsSync('dist/resultats')).toBe(false);
+    expect(existsSync('dist/galerie.html')).toBe(false);
+    expect(existsSync('dist/resultats.html')).toBe(false);
   });
 
   it('affiche le logo rond dans le header', () => {

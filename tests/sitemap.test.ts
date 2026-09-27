@@ -15,12 +15,12 @@ describe('sitemap.xml', () => {
       '/mentions-legales',
     ];
     for (const page of pagesStatiques) {
-      expect(content).toContain(`<loc>https://example.com${page}</loc>`);
+      expect(content).toContain(`<loc>https://tranquil-mooncake-d1bdc5.netlify.app${page}</loc>`);
     }
 
     expect(content).not.toContain('/galerie');
     expect(content).not.toContain('/resultats');
-    expect(content).toContain('<loc>https://example.com/actualites/2026-09-16-remise-des-ceintures</loc>');
-    expect(content).toContain('<loc>https://example.com/actualites/2026-09-05-forum-des-associations</loc>');
+    expect(content).toContain('<loc>https://tranquil-mooncake-d1bdc5.netlify.app/actualites/2026-09-16-remise-des-ceintures</loc>');
+    expect(content).toContain('<loc>https://tranquil-mooncake-d1bdc5.netlify.app/actualites/2026-09-05-forum-des-associations</loc>');
   });
 });

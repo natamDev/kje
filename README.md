@@ -36,7 +36,7 @@ manuelle (voir le spec).
 1. Connecter ce dépôt Git à un nouveau site Netlify.
 2. Build command : `npm run build`
 3. Publish directory : `dist`
-4. Une fois le nom de domaine définitif choisi, le configurer dans
+4. Adresse actuelle : https://tranquil-mooncake-d1bdc5.netlify.app. Une fois le nom de domaine définitif choisi, le configurer dans
    Netlify et mettre à jour `site` dans `astro.config.mjs`.
 
 En cas de changement d'hébergeur, mettre aussi à jour `hebergeur` dans
