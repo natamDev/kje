@@ -1,4 +1,4 @@
-# Site vitrine — Dojo Kyokushin + Jujutsu Eskrima
+# Site vitrine — Kyokushin Jutsu Escrima Aubagne
 
 Site statique construit avec [Astro](https://astro.build). Voir le design
 complet dans `docs/superpowers/specs/2026-09-09-site-vitrine-dojo-design.md`.

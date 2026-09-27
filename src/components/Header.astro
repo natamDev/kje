@@ -1,4 +1,6 @@
 ---
+import { club } from '../data/club';
+
 const links = [
   { href: '/', label: 'Accueil' },
   { href: '/dojo', label: 'Le dojo' },
@@ -14,8 +16,8 @@ const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWi
 <header>
   <div class="header-inner">
     <a class="brand" href="/">
-      <img src="/logo-rond.png" alt="Dojo Kyokushin + Jujutsu Eskrima" width="52" height="52" />
-      <span>Kyokushin + Jujutsu Eskrima</span>
+      <img src="/logo-rond.png" alt={`Logo ${club.nom}`} width="52" height="52" />
+      <span>{club.nom}</span>
     </a>
     <nav>
       <ul>

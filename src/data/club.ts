@@ -1,6 +1,6 @@
 // Identité légale : fiche officielle (SIREN 538 112 566) sur annuaire-entreprises.data.gouv.fr.
 export const club = {
-  nom: 'Dojo Kyokushin + Jujutsu Eskrima',
+  nom: 'Kyokushin Jutsu Escrima Aubagne',
   nomLegal: 'Kyokushin Jutsu Escrima Aubagnais',
   formeJuridique: 'Association déclarée',
   siren: '538 112 566',
