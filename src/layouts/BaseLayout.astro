@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import { club } from '../data/club';
 
 export interface Props {
   title: string;
@@ -36,14 +37,24 @@ const ogImageURL = new URL('/logo.jpg', Astro.site);
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
-      name: 'Dojo Kyokushin + Jujutsu Eskrima',
+      name: club.nom,
+      legalName: club.nomLegal,
       description,
       image: ogImageURL,
+      foundingDate: club.dateCreation,
+      identifier: {
+        '@type': 'PropertyValue',
+        propertyID: 'SIREN',
+        value: club.siren.replace(/ /g, ''),
+      },
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Adresse à compléter',
+        streetAddress: club.adresse.rue,
+        postalCode: club.adresse.codePostal,
+        addressLocality: club.adresse.ville,
+        addressCountry: club.adresse.pays,
       },
-      telephone: '00 00 00 00 00',
+      telephone: club.telephone,
     })} />
     <title>{pageTitle}</title>
   </head>

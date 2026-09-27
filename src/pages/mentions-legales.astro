@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { club } from '../data/club';
+
+const dateCreation = new Date(club.dateCreation).toLocaleDateString('fr-FR', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+<BaseLayout
+  title="Mentions légales"
+  description="Mentions légales du site de l'association Kyokushin Jutsu Escrima Aubagnais."
+>
+  <h1>Mentions légales</h1>
+
+  <section>
+    <h2>Éditeur du site</h2>
+    <dl class="fiche">
+      <dt>Dénomination</dt>
+      <dd>{club.nomLegal}</dd>
+      <dt>Forme juridique</dt>
+      <dd>{club.formeJuridique}</dd>
+      <dt>SIREN</dt>
+      <dd>{club.siren}</dd>
+      <dt>SIRET du siège</dt>
+      <dd>{club.siret}</dd>
+      <dt>Siège social</dt>
+      <dd>{club.adresse.rue}, {club.adresse.codePostal} {club.adresse.ville}</dd>
+      <dt>Date de création</dt>
+      <dd>{dateCreation}</dd>
+      <dt>Directeur de la publication</dt>
+      <dd>[À COMPLÉTER]</dd>
+    </dl>
+    <p>
+      <a href={club.ficheOfficielle}>Fiche officielle de l'association sur l'Annuaire des Entreprises</a>
+    </p>
+  </section>
+
+  <section>
+    <h2>Hébergement</h2>
+    <p>[À COMPLÉTER : hébergeur du site, par exemple Cloudflare Pages, avec son adresse.]</p>
+  </section>
+</BaseLayout>

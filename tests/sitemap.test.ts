@@ -14,6 +14,7 @@ describe('sitemap.xml', () => {
       '/resultats',
       '/tarifs',
       '/contact',
+      '/mentions-legales',
     ];
     for (const page of pagesStatiques) {
       expect(content).toContain(`<loc>https://example.com${page}</loc>`);

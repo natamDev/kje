@@ -17,6 +17,7 @@ describe("page d'accueil", () => {
     const html = readDistHtml('/');
     expect(html).toMatch(/<section class="hero">[\s\S]*極真空手/);
     expect(html).toMatch(/<h1[^>]*>La force tranquille de l'ours\.<\/h1>/);
+    expect(html).toContain('depuis 1999');
   });
 
   it("présente les deux styles avec un lien vers la page du dojo", () => {

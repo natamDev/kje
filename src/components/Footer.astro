@@ -1,9 +1,14 @@
 ---
+import { club } from '../data/club';
+
 const currentYear = new Date().getFullYear();
 ---
 <footer>
   <div class="footer-inner">
-    <p>Dojo Kyokushin + Jujutsu Eskrima — {currentYear}</p>
+    <div class="identite">
+      <p>{club.nomLegal} — {currentYear}</p>
+      <p><a href="/mentions-legales">Mentions légales</a></p>
+    </div>
     <div class="affiliation">
       <img src="/logo-ffk.jpg" alt="Fédération Française de Karaté" width="120" height="54" loading="lazy" />
       <span>Club affilié FFK</span>

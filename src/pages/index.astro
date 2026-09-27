@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { creneaux, groupByJour } from '../data/planning';
+import { club } from '../data/club';
 
 const dernieresActus = (await getCollection('actualites'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -16,7 +17,7 @@ const planningParJour = groupByJour(creneaux);
   <section class="hero">
     <div class="hero-kanji" lang="ja">極真空手</div>
     <div class="hero-text">
-      <p class="surtitre">Dojo d'arts martiaux</p>
+      <p class="surtitre">Dojo d'arts martiaux · Aubagne · depuis {club.anneeCreation}</p>
       <h1>La force tranquille de l'ours.</h1>
       <p class="accroche">
         Karaté Kyokushin et Jujutsu Eskrima, enseignés dans le respect de la

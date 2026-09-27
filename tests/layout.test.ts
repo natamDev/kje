@@ -43,4 +43,10 @@ describe('pied de page', () => {
     expect(html).toMatch(/<footer>[\s\S]*<img[^>]*src="\/logo-ffk\.jpg"[^>]*alt="Fédération Française de Karaté"[\s\S]*<\/footer>/);
     expect(html).toContain('Club affilié FFK');
   });
+
+  it('affiche le nom légal et un lien vers les mentions légales', () => {
+    const html = readDistHtml('/');
+    expect(html).toMatch(/<footer>[\s\S]*Kyokushin Jutsu Escrima Aubagnais[\s\S]*<\/footer>/);
+    expect(html).toMatch(/<footer>[\s\S]*href="\/mentions-legales"[\s\S]*<\/footer>/);
+  });
 });

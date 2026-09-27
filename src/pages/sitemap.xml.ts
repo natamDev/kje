@@ -10,6 +10,7 @@ const staticRoutes = [
   '/resultats',
   '/tarifs',
   '/contact',
+  '/mentions-legales',
 ];
 
 export const GET: APIRoute = async ({ site }) => {
