@@ -14,41 +14,84 @@ const planningParJour = groupByJour(creneaux);
   description="Dojo Kyokushin et Jujutsu Eskrima : essai gratuit, planning des cours, actualités et résultats de compétition."
 >
   <section class="hero">
-    <img
-      src="/ours-montagne.png"
-      alt="Ours dressé devant une montagne, emblème du dojo"
-      class="hero-image"
-      width="664"
-      height="554"
-      fetchpriority="high"
-    />
-    <h1>Dojo Kyokushin + Jujutsu Eskrima</h1>
-    <p>Arts martiaux traditionnels japonais et philippins, pour adultes et enfants.</p>
-    <a class="cta" href="/contact">Essai gratuit</a>
+    <div class="hero-kanji" lang="ja">極真空手</div>
+    <div class="hero-text">
+      <p class="surtitre">Dojo d'arts martiaux</p>
+      <h1>La force tranquille de l'ours.</h1>
+      <p class="accroche">
+        Karaté Kyokushin et Jujutsu Eskrima, enseignés dans le respect de la
+        tradition, pour adultes et enfants.
+      </p>
+      <div class="hero-actions">
+        <a class="cta" href="/contact">Essai gratuit</a>
+        <a class="lien-souligne" href="/dojo">Découvrir le dojo</a>
+      </div>
+    </div>
+    <div class="hero-visuel">
+      <img
+        src="/ours-encre.png"
+        alt="Ours dressé devant une montagne, emblème du dojo"
+        class="hero-image"
+        width="664"
+        height="554"
+        fetchpriority="high"
+      />
+    </div>
   </section>
 
-  <section class="horaires-resume">
-    <h2>Horaires</h2>
-    <ul>
-      {Object.entries(planningParJour).map(([jour, creneauxDuJour]) => (
-        <li>
-          <strong>{jour}</strong> :
-          {creneauxDuJour.map((c) => `${c.cours} ${c.heureDebut}-${c.heureFin}`).join(', ')}
-        </li>
-      ))}
+  <section class="bloc horaires-resume">
+    <div class="bloc-titre">
+      <p class="numero">01 — <span lang="ja">稽古</span></p>
+      <h2>Horaires</h2>
+      <a class="lien-souligne" href="/planning">Planning complet</a>
+    </div>
+    <ul class="lignes">
+      {Object.entries(planningParJour).flatMap(([jour, creneauxDuJour]) =>
+        creneauxDuJour.map((c) => (
+          <li>
+            <strong>{jour}</strong>
+            <span>{c.heureDebut} – {c.heureFin}</span>
+            <span class="discret">{c.cours} · {c.niveau}</span>
+          </li>
+        ))
+      )}
     </ul>
-    <a href="/planning">Voir le planning complet</a>
   </section>
 
-  <section class="dernieres-actus">
-    <h2>Actualités récentes</h2>
-    <ul>
+  <section class="styles-encre">
+    <div>
+      <p class="numero">02 — <span lang="ja">極真</span></p>
+      <h2>Kyokushin</h2>
+      <p>
+        Karaté full-contact fondé par Mas Oyama, reconnu pour la rigueur de
+        son entraînement.
+      </p>
+    </div>
+    <div>
+      <p class="numero">03 — <span lang="ja">柔術</span></p>
+      <h2>Jujutsu Eskrima</h2>
+      <p>
+        Le close-combat du Jujutsu japonais allié à l'art martial philippin
+        de l'Eskrima : bâton, lame, défense rapprochée.
+      </p>
+    </div>
+  </section>
+
+  <section class="bloc dernieres-actus">
+    <div class="bloc-titre">
+      <p class="numero">04 — <span lang="ja">便り</span></p>
+      <h2>Actualités</h2>
+      <a class="lien-souligne" href="/actualites">Toutes les actualités</a>
+    </div>
+    <ul class="cartes">
       {dernieresActus.map((actu) => (
         <li>
-          <a href={`/actualites/${actu.slug}`}>{actu.data.title}</a>
+          <a href={`/actualites/${actu.slug}`}>
+            <span class="discret">{actu.data.date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+            <span class="carte-titre">{actu.data.title}</span>
+          </a>
         </li>
       ))}
     </ul>
-    <a href="/actualites">Voir toutes les actualités</a>
   </section>
 </BaseLayout>

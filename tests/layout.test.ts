@@ -20,8 +20,27 @@ describe('navigation commune', () => {
     }
   });
 
-  it('affiche le logo noir dans le header', () => {
+  it('affiche le logo rond dans le header', () => {
     const html = readDistHtml('/');
-    expect(html).toMatch(/<header>[\s\S]*<img[^>]*src="\/logo-noir-96\.png"[\s\S]*<\/header>/);
+    expect(html).toMatch(/<header>[\s\S]*<img[^>]*src="\/logo-rond\.png"[\s\S]*<\/header>/);
+  });
+
+  it('signale la page en cours dans la navigation', () => {
+    const html = readDistHtml('/planning');
+    expect(html).toMatch(/<a href="\/planning"[^>]*aria-current="page"/);
+    expect(html).not.toMatch(/<a href="\/"[^>]*aria-current="page"/);
+  });
+
+  it('charge les polices Shippori Mincho et Zen Kaku Gothic', () => {
+    const html = readDistHtml('/');
+    expect(html).toMatch(/<link[^>]*href="https:\/\/fonts\.googleapis\.com\/css2\?[^"]*Shippori\+Mincho\+B1[^"]*Zen\+Kaku\+Gothic\+New/);
+  });
+});
+
+describe('pied de page', () => {
+  it("affiche l'affiliation FFK avec son logo", () => {
+    const html = readDistHtml('/');
+    expect(html).toMatch(/<footer>[\s\S]*<img[^>]*src="\/logo-ffk\.jpg"[^>]*alt="Fédération Française de Karaté"[\s\S]*<\/footer>/);
+    expect(html).toContain('Club affilié FFK');
   });
 });
