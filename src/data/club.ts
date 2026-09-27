@@ -21,6 +21,8 @@ export const club = {
     ville: 'Aubagne',
     pays: 'FR',
   },
+  // Recherche Google Maps qui pointe sur la fiche du dojo.
+  rechercheCarte: 'Kyokushin Jutsu Eskrima Aubagne, 206 Chem. du Merlançon, Chem. du Qur des Vaux, 13400 Aubagne',
   ficheOfficielle:
     'https://annuaire-entreprises.data.gouv.fr/entreprise/kyokushin-jutsu-escrima-aubagnais-538112566',
   email: 'kje.aubagne@gmail.com',

@@ -3,6 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { club } from '../data/club';
 
 const { email, telephone, telephoneInternational } = club;
+const recherche = encodeURIComponent(club.rechercheCarte);
+const carteURL = `https://www.google.com/maps?q=${recherche}&output=embed`;
+const itineraireURL = `https://www.google.com/maps/dir/?api=1&destination=${recherche}`;
 ---
 <BaseLayout
   title="Contact"
@@ -21,4 +24,16 @@ const { email, telephone, telephoneInternational } = club;
     Envie d'essayer un cours ? Écrivez-nous par email, nous vous
     répondrons avec les modalités du cours d'essai gratuit.
   </p>
+
+  <section class="carte">
+    <h2>Accès au dojo</h2>
+    <iframe
+      src={carteURL}
+      title="Carte Google Maps du dojo Kyokushin Jutsu Eskrima à Aubagne"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen
+    ></iframe>
+    <p><a class="lien-souligne" href={itineraireURL}>Itinéraire vers le dojo</a></p>
+  </section>
 </BaseLayout>

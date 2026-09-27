@@ -26,3 +26,13 @@ describe('page contact : coordonnées', () => {
     expect(html).toContain('06 21 48 20 29');
   });
 });
+
+describe('page contact : carte', () => {
+  it('intègre une carte Google Maps du dojo et un lien d’itinéraire', () => {
+    const html = readDistHtml('/contact');
+    expect(html).toMatch(/<iframe[^>]*src="https:\/\/www\.google\.com\/maps\?q=[^"]*Merlan[^"]*&(amp;)?output=embed"/);
+    expect(html).toMatch(/<iframe[^>]*title="[^"]+"/);
+    expect(html).toMatch(/<iframe[^>]*loading="lazy"/);
+    expect(html).toMatch(/href="https:\/\/www\.google\.com\/maps\/dir\/\?api=1&(amp;)?destination=[^"]+"/);
+  });
+});

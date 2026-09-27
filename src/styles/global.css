@@ -513,3 +513,14 @@ footer .identite p + p {
   color: var(--color-primary);
   font-weight: 700;
 }
+
+/* Contact : carte */
+
+.carte iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 320px;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--color-ink);
+}
