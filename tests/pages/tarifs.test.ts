@@ -14,6 +14,12 @@ describe('page tarifs', () => {
     expect(html).toContain('par mois');
   });
 
+  it('mentionne le cours d’essai gratuit', () => {
+    const html = readDistHtml('/tarifs');
+    expect(html).toContain('Cours d’essai');
+    expect(html).toContain('Gratuit');
+  });
+
   it('affiche la licence, l’inscription et l’équipement', () => {
     const html = readDistHtml('/tarifs');
     expect(html).toContain('Licence');

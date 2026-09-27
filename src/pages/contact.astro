@@ -10,8 +10,8 @@ const { email, telephone, telephoneInternational } = club;
 >
   <h1>Contact</h1>
   <address>
-    {club.adresse.rue}<br />
-    {club.adresse.codePostal} {club.adresse.ville}
+    {club.lieuCours.rue}<br />
+    {club.lieuCours.codePostal} {club.lieuCours.ville}
   </address>
   <p>Téléphone : <a href={`tel:${telephoneInternational}`}>{telephone}</a></p>
   <p>

@@ -11,7 +11,8 @@ describe('page contact', () => {
 describe('page contact : adresse', () => {
   it('affiche l’adresse des cours à Aubagne', () => {
     const html = readDistHtml('/contact');
-    expect(html).toContain('7 boulevard Amiral Ganteaume');
+    expect(html).toContain('206 chemin du Merlançon');
+    expect(html).toContain('Quartier des Vaux Nord');
     expect(html).toContain('13400 Aubagne');
     expect(html).not.toContain('Adresse à compléter');
   });

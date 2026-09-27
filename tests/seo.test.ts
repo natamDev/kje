@@ -43,7 +43,7 @@ describe('données structurées', () => {
     const data = JSON.parse(match![1]);
     expect(data.legalName).toBe('Kyokushin Jutsu Escrima Aubagnais');
     expect(data.address).toMatchObject({
-      streetAddress: '7 boulevard Amiral Ganteaume',
+      streetAddress: '206 chemin du Merlançon, Quartier des Vaux Nord',
       postalCode: '13400',
       addressLocality: 'Aubagne',
       addressCountry: 'FR',

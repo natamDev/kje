@@ -8,6 +8,8 @@ describe('page mentions légales', () => {
     expect(html).toContain('Association déclarée');
     expect(html).toContain('538 112 566');
     expect(html).toContain('7 boulevard Amiral Ganteaume');
+    const main = html.match(/<main>([\s\S]*)<\/main>/)![1];
+    expect(main).not.toContain('Merlançon');
     expect(html).toContain('13400 Aubagne');
     expect(html).toContain('href="https://annuaire-entreprises.data.gouv.fr/entreprise/kyokushin-jutsu-escrima-aubagnais-538112566"');
   });

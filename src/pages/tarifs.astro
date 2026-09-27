@@ -1,12 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { saison, cotisations, fraisAnnuels, equipement, libellePeriode, formatPrix } from '../data/tarifs';
+import { saison, coursEssai, cotisations, fraisAnnuels, equipement, libellePeriode, formatPrix } from '../data/tarifs';
 ---
 <BaseLayout
   title="Tarifs"
   description="Tarifs et cotisations du dojo pour les cours de Kyokushin et Jujutsu Eskrima."
 >
   <h1>Tarifs saison {saison}</h1>
+
+  <p class="accroche">
+    {coursEssai.label} : <strong>{formatPrix(coursEssai.prixCentimes)}</strong>.
+    <a href="/contact">Contactez-nous</a> pour venir essayer un cours.
+  </p>
 
   <section>
     <h2>Cotisations</h2>

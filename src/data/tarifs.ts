@@ -14,6 +14,8 @@ export const cotisations: Tarif[] = [
   { label: 'Plus de 18 ans', prixCentimes: 4500, periode: 'mois' },
 ];
 
+export const coursEssai: Tarif = { label: 'Cours d’essai', prixCentimes: 0, periode: 'mois' };
+
 export const fraisAnnuels: Tarif[] = [
   { label: 'Licence', prixCentimes: 4000, periode: 'saison' },
   { label: 'Inscription', prixCentimes: 4000, periode: 'saison' },

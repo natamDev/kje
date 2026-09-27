@@ -7,8 +7,16 @@ export const club = {
   siret: '538 112 566 00012',
   dateCreation: '1999-09-16',
   anneeCreation: 1999,
-  adresse: {
+  // Siège social déclaré (mentions légales).
+  siege: {
     rue: '7 boulevard Amiral Ganteaume',
+    codePostal: '13400',
+    ville: 'Aubagne',
+    pays: 'FR',
+  },
+  // Lieu où se déroulent les cours (contact, données structurées).
+  lieuCours: {
+    rue: '206 chemin du Merlançon, Quartier des Vaux Nord',
     codePostal: '13400',
     ville: 'Aubagne',
     pays: 'FR',
@@ -25,5 +33,3 @@ export const club = {
     site: 'https://www.netlify.com',
   },
 };
-
-export const adresseComplete = `${club.adresse.rue}, ${club.adresse.codePostal} ${club.adresse.ville}`;
