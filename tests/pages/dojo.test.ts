@@ -17,6 +17,19 @@ describe('page le dojo : professeurs', () => {
     expect(html).toContain('Diplômé d’Instructeur Fédéral (DIF)');
     expect(html).toContain('Pascal Wehrle');
     expect(html).toContain('4<sup>e</sup> Dan');
+    expect(html).toContain('Grégory Cenci');
+    expect(html).toContain('1<sup>er</sup> Dan');
+    expect(html).toContain('Hélène');
     expect(html).not.toContain('présentation du/des sensei');
+  });
+});
+
+describe('page le dojo : diplômes', () => {
+  it('indique le DIF pour Gérard Calenge et Pascal Wehrle', () => {
+    const html = readDistHtml('/dojo');
+    const dif = html.match(/Diplômé d’Instructeur Fédéral \(DIF\)/g) ?? [];
+    expect(dif).toHaveLength(2);
+    const pascal = html.slice(html.indexOf('Pascal Wehrle'), html.indexOf('Grégory Cenci'));
+    expect(pascal).toContain('(DIF)');
   });
 });

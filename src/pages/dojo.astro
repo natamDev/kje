@@ -1,5 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const DIF = 'Diplômé d’Instructeur Fédéral (DIF)';
+
+// dan: null tant que le grade n'est pas connu.
+const instructeurs: { nom: string; dan: number | null; titre: string }[] = [
+  { nom: 'Gérard Calenge', dan: 5, titre: DIF },
+  { nom: 'Pascal Wehrle', dan: 4, titre: DIF },
+  { nom: 'Grégory Cenci', dan: 1, titre: 'Instructeur' },
+  { nom: 'Hélène [NOM]', dan: null, titre: 'Instructrice' },
+];
 ---
 <BaseLayout
   title="Le dojo"
@@ -38,16 +48,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section>
     <h2>Nos instructeurs</h2>
     <ul class="lignes instructeurs">
-      <li>
-        <strong>Gérard Calenge</strong>
-        <span>5<sup>e</sup> Dan</span>
-        <span class="discret">Diplômé d’Instructeur Fédéral (DIF)</span>
-      </li>
-      <li>
-        <strong>Pascal Wehrle</strong>
-        <span>4<sup>e</sup> Dan</span>
-        <span class="discret">Instructeur</span>
-      </li>
+      {instructeurs.map((i) => (
+        <li>
+          <strong>{i.nom}</strong>
+          {i.dan === null
+            ? <span>[X]<sup>e</sup> Dan</span>
+            : <span>{i.dan}<sup>{i.dan === 1 ? 'er' : 'e'}</sup> Dan</span>}
+          <span class="discret">{i.titre}</span>
+        </li>
+      ))}
     </ul>
   </section>
 </BaseLayout>
