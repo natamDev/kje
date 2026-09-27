@@ -35,3 +35,10 @@ describe('page tarifs', () => {
     expect(html).toContain('3 fois');
   });
 });
+
+describe('page tarifs : licence FFK', () => {
+  it('renvoie vers l’espace licencié de la FFK', () => {
+    const html = readDistHtml('/tarifs');
+    expect(html).toMatch(/<a[^>]*href="https:\/\/www\.ffkarate\.fr\/espace-licencies\/"[^>]*>[\s\S]*?espace licencié FFK/);
+  });
+});
