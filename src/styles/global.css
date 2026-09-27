@@ -91,6 +91,8 @@ header .brand {
 header .brand img {
   width: 52px;
   height: 52px;
+  /* logo.png a un fond blanc opaque : on le fond dans la couleur papier. */
+  mix-blend-mode: multiply;
 }
 
 header nav ul {

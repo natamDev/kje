@@ -17,7 +17,7 @@ const {
 const pageTitle = `${title} — ${club.nom}`;
 // build.format 'file' donne /tarifs.html : l'URL publique servie par Netlify est /tarifs.
 const canonicalURL = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site);
-const ogImageURL = new URL('/logo.jpg', Astro.site);
+const ogImageURL = new URL('/logo.png', Astro.site);
 ---
 <html lang="fr">
   <head>

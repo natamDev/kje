@@ -32,7 +32,7 @@ describe('page tarifs', () => {
   it('précise les conditions : certificat médical et paiement en 2 fois', () => {
     const html = readDistHtml('/tarifs');
     expect(html).toContain('Certificat médical obligatoire');
-    expect(html).toContain('3 fois');
+    expect(html).toContain('2 fois');
   });
 });
 

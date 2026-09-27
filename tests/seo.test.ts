@@ -51,3 +51,10 @@ describe('données structurées', () => {
     expect(data.foundingDate).toBe('1999-09-16');
   });
 });
+
+describe('image de partage', () => {
+  it('utilise logo.png, qui existe, pour og:image', () => {
+    const html = readDistHtml('/');
+    expect(html).toContain('<meta property="og:image" content="https://tranquil-mooncake-d1bdc5.netlify.app/logo.png"');
+  });
+});

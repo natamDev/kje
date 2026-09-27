@@ -20,7 +20,8 @@ describe('page le dojo : professeurs', () => {
     expect(html).toContain('4<sup>e</sup> Dan');
     expect(html).toContain('Grégory Cenci');
     expect(html).toContain('1<sup>er</sup> Dan');
-    expect(html).toContain('Hélène');
+    expect(html).toContain('Ellen Mogica');
+    expect(html).toContain('Laurent');
     expect(html).not.toContain('présentation du/des sensei');
   });
 });

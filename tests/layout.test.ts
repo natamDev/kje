@@ -27,9 +27,9 @@ describe('navigation commune', () => {
     expect(existsSync('dist/resultats.html')).toBe(false);
   });
 
-  it('affiche le logo rond dans le header', () => {
+  it("affiche le logo couleur (logo.png réduit) dans le header", () => {
     const html = readDistHtml('/');
-    expect(html).toMatch(/<header>[\s\S]*<img[^>]*src="\/logo-rond\.png"[\s\S]*<\/header>/);
+    expect(html).toMatch(/<header>[\s\S]*<img[^>]*src="\/logo-128\.png"[\s\S]*<\/header>/);
   });
 
   it('signale la page en cours dans la navigation', () => {
