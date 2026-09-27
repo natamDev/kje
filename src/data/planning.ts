@@ -1,4 +1,4 @@
-// Données d'exemple — à remplacer avant mise en ligne par les vraies valeurs du club.
+// Horaires de la saison 2026-2027 (fiche d'inscription du club).
 export interface Creneau {
   jour: 'Lundi' | 'Mardi' | 'Mercredi' | 'Jeudi' | 'Vendredi' | 'Samedi' | 'Dimanche';
   heureDebut: string;
@@ -8,9 +8,10 @@ export interface Creneau {
 }
 
 export const creneaux: Creneau[] = [
-  { jour: 'Lundi', heureDebut: '18:00', heureFin: '19:30', cours: 'Kyokushin', niveau: 'Tous niveaux' },
-  { jour: 'Mercredi', heureDebut: '19:00', heureFin: '20:30', cours: 'Jujutsu Eskrima', niveau: 'Adultes' },
-  { jour: 'Samedi', heureDebut: '10:00', heureFin: '11:30', cours: 'Kyokushin', niveau: 'Enfants' },
+  { jour: 'Mardi', heureDebut: '18:00', heureFin: '19:00', cours: 'Kyokushin Jutsu Eskrima', niveau: 'Enfants' },
+  { jour: 'Mardi', heureDebut: '19:15', heureFin: '20:30', cours: 'Kyokushin Jutsu Eskrima', niveau: 'Adultes confirmés' },
+  { jour: 'Jeudi', heureDebut: '18:00', heureFin: '19:00', cours: 'Kyokushin Jutsu Eskrima', niveau: 'Enfants' },
+  { jour: 'Jeudi', heureDebut: '19:15', heureFin: '20:30', cours: 'Kyokushin Jutsu Eskrima', niveau: 'Adultes confirmés' },
 ];
 
 const ORDRE_JOURS: Creneau['jour'][] = [

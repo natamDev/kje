@@ -34,4 +34,8 @@ describe('formatPrix', () => {
   it('affiche "Gratuit" pour un prix à zéro', () => {
     expect(formatPrix(0)).toBe('Gratuit');
   });
+
+  it('formate les petits montants', () => {
+    expect(formatPrix(3500)).toBe('35 €');
+  });
 });

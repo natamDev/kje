@@ -47,8 +47,6 @@ En cas de changement d'hébergeur, mettre aussi à jour `hebergeur` dans
 - Photos de la galerie (remplacer `public/images/galerie/placeholder.svg`)
 - Textes définitifs : histoire du dojo, présentation des sensei
   (`src/pages/dojo.astro`)
-- `src/data/tarifs.ts` (tarifs réels)
-- `src/data/planning.ts` (horaires réels)
 - Supprimer ou remplacer les contenus d'exemple dans `src/content/actualites/`,
   `src/content/resultats/`, `src/content/galerie/` (actualités, résultats et
   photos fictifs utilisés comme exemples de mise en forme)

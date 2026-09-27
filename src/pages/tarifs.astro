@@ -1,24 +1,66 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { tarifs, formatPrix } from '../data/tarifs';
+import { saison, cotisations, fraisAnnuels, equipement, libellePeriode, formatPrix } from '../data/tarifs';
 ---
 <BaseLayout
   title="Tarifs"
   description="Tarifs et cotisations du dojo pour les cours de Kyokushin et Jujutsu Eskrima."
 >
-  <h1>Tarifs</h1>
-  <table>
-    <thead>
-      <tr><th>Formule</th><th>Prix</th><th>Période</th></tr>
-    </thead>
-    <tbody>
-      {tarifs.map((t) => (
-        <tr>
-          <td>{t.label}</td>
-          <td>{formatPrix(t.prixCentimes)}</td>
-          <td>{t.periode}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
+  <h1>Tarifs saison {saison}</h1>
+
+  <section>
+    <h2>Cotisations</h2>
+    <p class="discret">Calculées pour deux cours par semaine, de septembre à juin.</p>
+    <table>
+      <thead>
+        <tr><th>Âge</th><th>Prix</th><th>Période</th></tr>
+      </thead>
+      <tbody>
+        {cotisations.map((t) => (
+          <tr>
+            <td>{t.label}</td>
+            <td>{formatPrix(t.prixCentimes)}</td>
+            <td>{libellePeriode[t.periode]}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Frais annuels</h2>
+    <table>
+      <tbody>
+        {fraisAnnuels.map((t) => (
+          <tr>
+            <td>{t.label}</td>
+            <td>{formatPrix(t.prixCentimes)}</td>
+            <td>{libellePeriode[t.periode]}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Équipement</h2>
+    <table>
+      <tbody>
+        {equipement.map((e) => (
+          <tr>
+            <td>{e.label}{e.note && <span class="discret"> ({e.note})</span>}</td>
+            <td>{e.prixCentimes !== undefined ? formatPrix(e.prixCentimes) : 'Obligatoire'}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="conditions">
+    <p class="encadre">Certificat médical obligatoire</p>
+    <p>
+      Possibilité de payer en 3 fois maximum : tous les chèques sont remis à
+      l'inscription, en indiquant les dates d'encaissement souhaitées.
+    </p>
+  </section>
 </BaseLayout>

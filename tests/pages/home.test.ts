@@ -29,7 +29,8 @@ describe("page d'accueil", () => {
 
   it("affiche un résumé des horaires avec un lien vers le planning complet", () => {
     const html = readDistHtml('/');
-    expect(html).toContain('Lundi');
+    expect(html).toContain('Mardi');
+    expect(html).toContain('19:15');
     expect(html).toContain('href="/planning"');
   });
 
