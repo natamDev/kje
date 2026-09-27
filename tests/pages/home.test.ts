@@ -39,4 +39,11 @@ describe("page d'accueil", () => {
     expect(html).toContain('Stage de Kyokushin');
     expect(html).toContain('Journée portes ouvertes');
   });
+
+  it("intègre la vidéo de présentation du dojo (sans cookies) avec son crédit", () => {
+    const html = readDistHtml('/');
+    expect(html).toMatch(/<iframe[^>]*src="https:\/\/www\.youtube-nocookie\.com\/embed\/JPf8OOb2EKw"[^>]*>/);
+    expect(html).toMatch(/<iframe[^>]*title="Asso Kyokushin Jutsu Eskrima Aubagne"/);
+    expect(html).toContain('Webbus Pays d');
+  });
 });
