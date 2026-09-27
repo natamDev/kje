@@ -33,3 +33,15 @@ describe('page le dojo : diplômes', () => {
     expect(pascal).toContain('(DIF)');
   });
 });
+
+describe('page le dojo : histoire', () => {
+  it('présente le Kyokushin Jutsu Eskrima et son fondateur Alain Setrouk', () => {
+    const html = readDistHtml('/dojo');
+    expect(html).toContain('Karaté Kyokushinkai');
+    expect(html).toContain('Kali');
+    expect(html).toContain('Alain Setrouk');
+    expect(html).toContain('9<sup>e</sup> Dan');
+    expect(html).toContain('Champion du monde de Karaté en 1972');
+    expect(html).not.toContain('Contenu à venir');
+  });
+});

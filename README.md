@@ -44,5 +44,5 @@ En cas de changement d'hébergeur, mettre aussi à jour `hebergeur` dans
 
 ## Contenu à fournir avant mise en ligne
 
-- Texte définitif : histoire du dojo (`src/pages/dojo.astro`)
+- Nom de famille et grade d'Hélène (`src/pages/dojo.astro`, liste `instructeurs`)
 - Nom de domaine définitif
