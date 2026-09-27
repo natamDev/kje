@@ -66,3 +66,18 @@ describe('nom du club', () => {
     expect(html).not.toContain('Kyokushin + Jujutsu Eskrima');
   });
 });
+
+describe('menu mobile', () => {
+  it('expose un bouton Menu accessible qui contrôle la navigation', () => {
+    const html = readDistHtml('/');
+    expect(html).toMatch(/<button[^>]*class="menu-toggle"[^>]*>/);
+    expect(html).toMatch(/<button[^>]*aria-controls="menu-principal"/);
+    expect(html).toMatch(/<button[^>]*aria-expanded="false"/);
+    expect(html).toMatch(/<nav[^>]*id="menu-principal"[^>]*aria-label="Menu principal"/);
+  });
+
+  it('cache le bouton tant que le script ne l’a pas activé', () => {
+    const html = readDistHtml('/');
+    expect(html).toMatch(/<button[^>]*class="menu-toggle"[^>]*hidden/);
+  });
+});
