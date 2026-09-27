@@ -15,7 +15,7 @@ describe('page le dojo : professeurs', () => {
     expect(html).toContain('Gérard Calenge');
     expect(html).toContain('5<sup>e</sup> Dan');
     expect(html).toContain('Diplômé d’Instructeur Fédéral (DIF)');
-    expect(html).toContain('Pascal Wherle');
+    expect(html).toContain('Pascal Wehrle');
     expect(html).toContain('4<sup>e</sup> Dan');
     expect(html).not.toContain('présentation du/des sensei');
   });
