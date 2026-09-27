@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Carrousel from '../components/Carrousel.astro';
+import { photosDojo } from '../data/photos-dojo';
 
 const DIF = 'Diplômé d’Instructeur Fédéral (DIF)';
 
@@ -7,7 +9,7 @@ const DIF = 'Diplômé d’Instructeur Fédéral (DIF)';
 const instructeurs: { nom: string; dan: number | null; titre: string }[] = [
   { nom: 'Gérard Calenge', dan: 5, titre: DIF },
   { nom: 'Pascal Wehrle', dan: 4, titre: DIF },
-  { nom: 'Ellen Mogica', dan: 1, titre: 'DIF' },
+  { nom: 'Ellen Mogica', dan: 1, titre: DIF },
   { nom: 'Laurent [NOM]', dan: 2, titre: 'Assistant' },
   { nom: 'Grégory Cenci', dan: 1, titre: 'Assistant' },
 
@@ -31,6 +33,11 @@ const instructeurs: { nom: string; dan: number | null; titre: string }[] = [
       Champion du monde de Karaté en 1972, est le pionnier du
       Kyokushinkai en France.
     </p>
+  </section>
+
+  <section class="dojo-photos">
+    <h2>Le dojo en images</h2>
+    <Carrousel photos={photosDojo} label="Photos du dojo" />
   </section>
 
   <section class="nos-styles">

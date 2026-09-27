@@ -27,10 +27,10 @@ describe('page le dojo : professeurs', () => {
 });
 
 describe('page le dojo : diplômes', () => {
-  it('indique le DIF pour Gérard Calenge et Pascal Wehrle', () => {
+  it('indique le DIF pour Gérard Calenge, Pascal Wehrle et Ellen Mogica', () => {
     const html = readDistHtml('/dojo');
     const dif = html.match(/Diplômé d’Instructeur Fédéral \(DIF\)/g) ?? [];
-    expect(dif).toHaveLength(2);
+    expect(dif).toHaveLength(3);
     const pascal = html.slice(html.indexOf('Pascal Wehrle'), html.indexOf('Grégory Cenci'));
     expect(pascal).toContain('(DIF)');
   });
@@ -45,5 +45,25 @@ describe('page le dojo : histoire', () => {
     expect(html).toContain('9<sup>e</sup> Dan');
     expect(html).toContain('Champion du monde de Karaté en 1972');
     expect(html).not.toContain('Contenu à venir');
+  });
+});
+
+describe('page le dojo : carrousel photos', () => {
+  it('affiche les 11 photos du dojo avec un texte alternatif', () => {
+    const html = readDistHtml('/dojo');
+    const carrousel = html.match(/<section[^>]*class="carrousel"[\s\S]*?<\/section>/)?.[0] ?? '';
+    const images = carrousel.match(/<img[^>]*>/g) ?? [];
+    expect(images).toHaveLength(11);
+    for (const img of images) {
+      expect(img).toMatch(/src="\/images\/dojo\/\d+\.jpeg"/);
+      expect(img).toMatch(/alt="[^"]+"/);
+    }
+  });
+
+  it('est une région nommée avec des boutons précédent / suivant', () => {
+    const html = readDistHtml('/dojo');
+    expect(html).toMatch(/<section[^>]*class="carrousel"[^>]*aria-label="Photos du dojo"/);
+    expect(html).toMatch(/<button[^>]*aria-label="Photo précédente"/);
+    expect(html).toMatch(/<button[^>]*aria-label="Photo suivante"/);
   });
 });

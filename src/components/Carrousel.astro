@@ -1,0 +1,76 @@
+---
+import type { Photo } from '../data/photos-dojo';
+
+export interface Props {
+  photos: Photo[];
+  label: string;
+}
+
+const { photos, label } = Astro.props;
+---
+<section class="carrousel" aria-label={label} aria-roledescription="carrousel">
+  <div class="carrousel-piste" tabindex="0">
+    {photos.map((photo, i) => (
+      <figure class="carrousel-diapo" aria-label={`${i + 1} sur ${photos.length}`}>
+        <img
+          src={photo.src}
+          alt={photo.alt}
+          width={photo.width}
+          height={photo.height}
+          loading={i < 2 ? 'eager' : 'lazy'}
+        />
+      </figure>
+    ))}
+  </div>
+  <div class="carrousel-controles" hidden>
+    <button type="button" class="carrousel-precedent" aria-label="Photo précédente">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l-6 6 6 6" /></svg>
+    </button>
+    <button type="button" class="carrousel-suivant" aria-label="Photo suivante">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4l6 6-6 6" /></svg>
+    </button>
+  </div>
+</section>
+
+<script>
+  // Sans JavaScript, la piste reste défilable au doigt ou à la molette.
+  for (const carrousel of document.querySelectorAll<HTMLElement>('.carrousel')) {
+    const piste = carrousel.querySelector<HTMLElement>('.carrousel-piste')!;
+    const controles = carrousel.querySelector<HTMLElement>('.carrousel-controles')!;
+    const precedent = carrousel.querySelector<HTMLButtonElement>('.carrousel-precedent')!;
+    const suivant = carrousel.querySelector<HTMLButtonElement>('.carrousel-suivant')!;
+    const diapos = [...piste.querySelectorAll<HTMLElement>('.carrousel-diapo')];
+
+    // Position de chaque diapo dans la piste, quel que soit son parent positionné.
+    const position = (d: HTMLElement) => d.offsetLeft - diapos[0].offsetLeft;
+    const indexCourant = () => {
+      const gauche = piste.scrollLeft;
+      let meilleur = 0;
+      diapos.forEach((d, i) => {
+        if (Math.abs(position(d) - gauche) < Math.abs(position(diapos[meilleur]) - gauche)) meilleur = i;
+      });
+      return meilleur;
+    };
+    const aller = (i: number) => {
+      const cible = diapos[Math.max(0, Math.min(diapos.length - 1, i))];
+      const douceur = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+      piste.scrollTo({ left: position(cible), behavior: douceur });
+    };
+    const majBoutons = () => {
+      precedent.disabled = piste.scrollLeft <= 1;
+      suivant.disabled = piste.scrollLeft + piste.clientWidth >= piste.scrollWidth - 1;
+    };
+
+    controles.hidden = false;
+    precedent.addEventListener('click', () => aller(indexCourant() - 1));
+    suivant.addEventListener('click', () => aller(indexCourant() + 1));
+    piste.addEventListener('scroll', majBoutons, { passive: true });
+    piste.addEventListener('scrollend', majBoutons);
+    window.addEventListener('resize', majBoutons);
+    piste.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') { event.preventDefault(); aller(indexCourant() - 1); }
+      if (event.key === 'ArrowRight') { event.preventDefault(); aller(indexCourant() + 1); }
+    });
+    majBoutons();
+  }
+</script>
