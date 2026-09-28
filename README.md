@@ -39,12 +39,9 @@ uniquement le site construit (contenu de `dist/`), servi par GitHub Pages.
 1. Sur `dev` : `npm run build`
 2. Remplacer le contenu de `master` par celui de `dist/` (fichier `.nojekyll` compris,
    sinon GitHub ignore le dossier `_astro`), commiter et pousser.
-3. Adresse actuelle : https://natamdev.github.io/kje (réglages par défaut de
-   `astro.config.mjs` : `site` = `https://natamdev.github.io`, `base` = `/kje`).
-4. Passage au nom de domaine https://kyokushin-jutsu-eskrima-aubagne.fr :
-   dans `astro.config.mjs`, mettre `SITE_URL` à cette adresse et `BASE_PATH` à `/`,
-   ajouter `public/CNAME` contenant `kyokushin-jutsu-eskrima-aubagne.fr`,
-   puis configurer le domaine dans les réglages Pages du dépôt.
+3. Adresse : https://kyokushin-jutsu-eskrima-aubagne.fr (`public/CNAME`, domaine
+   déclaré dans Settings → Pages du dépôt). `astro.config.mjs` : `site` = cette
+   adresse, `base` = `/`.
 
 Les liens internes passent par `url()` (`src/lib/url.ts`), qui ajoute le `base` :
 ne pas écrire de chemin `/...` en dur dans les pages.

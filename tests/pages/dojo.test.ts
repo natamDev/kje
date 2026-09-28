@@ -27,10 +27,10 @@ describe('page le dojo : professeurs', () => {
 });
 
 describe('page le dojo : diplômes', () => {
-  it('indique le DIF pour Gérard Calenge, Pascal Wehrle et Ellen Mogica', () => {
+  it('indique le DIF pour Gérard Calenge, Pascal Wehrle, Laurent Bonneaud et Ellen Mogica', () => {
     const html = readDistHtml('/dojo');
     const dif = html.match(/Diplômé d’Instructeur Fédéral \(DIF\)/g) ?? [];
-    expect(dif).toHaveLength(3);
+    expect(dif).toHaveLength(4);
     const pascal = html.slice(html.indexOf('Pascal Wehrle'), html.indexOf('Grégory Cenci'));
     expect(pascal).toContain('(DIF)');
   });
