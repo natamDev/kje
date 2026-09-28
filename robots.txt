@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://natamdev.github.io/kje/sitemap.xml
+Sitemap: https://kyokushin-jutsu-eskrima-aubagne.fr/sitemap.xml
