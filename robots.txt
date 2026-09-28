@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tranquil-mooncake-d1bdc5.netlify.app/sitemap.xml
+Sitemap: https://natamdev.github.io/kje/sitemap.xml
