@@ -1,4 +1,5 @@
 ---
+import { url } from '../../lib/url';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
 
@@ -24,21 +25,21 @@ const { title, date, medias = [], video } = actu.data;
     <Content />
 
     {video && (
-      <video class="actu-video" controls preload="metadata" poster={medias[0]}>
-        <source src={video} type="video/mp4" />
+      <video class="actu-video" controls preload="metadata" poster={medias[0] && url(medias[0])}>
+        <source src={url(video)} type="video/mp4" />
       </video>
     )}
 
     {medias.length > 0 && (
       <div class="medias">
         {medias.map((src, i) => (
-          <a href={src}>
-            <img src={src} alt={`${title} — photo ${i + 1}`} loading="lazy" />
+          <a href={url(src)}>
+            <img src={url(src)} alt={`${title} — photo ${i + 1}`} loading="lazy" />
           </a>
         ))}
       </div>
     )}
 
-    <p><a class="lien-souligne" href="/actualites">Toutes les actualités</a></p>
+    <p><a class="lien-souligne" href={url('/actualites')}>Toutes les actualités</a></p>
   </article>
 </BaseLayout>

@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Carrousel from '../components/Carrousel.astro';
 import { photosDojo } from '../data/photos-dojo';
@@ -42,7 +43,7 @@ const instructeurs: { nom: string; dan: number | null; titre: string }[] = [
 
   <section class="nos-styles">
     <img
-      src="/kanji-symbole.jpg"
+      src={url('/kanji-symbole.jpg')}
       alt="Symbole Kyokushin et kanji Osu"
       class="styles-emblem"
       width="415"

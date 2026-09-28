@@ -1,4 +1,5 @@
 ---
+import { sansBase, url } from '../lib/url';
 import { club } from '../data/club';
 
 const links = [
@@ -10,13 +11,13 @@ const links = [
   { href: '/contact', label: 'Contact' },
 ];
 
-const path = Astro.url.pathname;
+const path = sansBase(Astro.url.pathname);
 const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
 ---
 <header>
   <div class="header-inner">
-    <a class="brand" href="/">
-      <img src="/logo-128.png" alt={`Logo ${club.nom}`} width="52" height="52" />
+    <a class="brand" href={url('/')}>
+      <img src={url('/logo-128.png')} alt={`Logo ${club.nom}`} width="52" height="52" />
       <span>{club.nom}</span>
     </a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" hidden>
@@ -29,7 +30,7 @@ const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWi
     <nav id="menu-principal" aria-label="Menu principal">
       <ul>
         {links.map((link) => (
-          <li><a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a></li>
+          <li><a href={url(link.href)} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a></li>
         ))}
       </ul>
     </nav>

@@ -16,11 +16,11 @@ describe('page mentions légales', () => {
 });
 
 describe('page mentions légales : publication et hébergement', () => {
-  it('indique le directeur de la publication et l’hébergeur Netlify', () => {
+  it('indique le directeur de la publication et l’hébergeur GitHub', () => {
     const html = readDistHtml('/mentions-legales');
     expect(html).toContain('Gérard Calenge');
-    expect(html).toContain('Netlify, Inc.');
-    expect(html).toContain('101 2nd Street');
+    expect(html).toContain('GitHub, Inc.');
+    expect(html).toContain('88 Colin P. Kelly Jr. Street');
     expect(html).not.toContain('À COMPLÉTER');
   });
 });

@@ -1,4 +1,5 @@
 ---
+import { url } from '../../lib/url';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
@@ -13,9 +14,9 @@ const actus = (await getCollection('actualites'))
   <ul class="cartes">
     {actus.map((actu) => (
       <li>
-        <a href={`/actualites/${actu.slug}`}>
+        <a href={url(`/actualites/${actu.slug}`)}>
           {actu.data.coverImage && (
-            <img class="carte-image" src={actu.data.coverImage} alt="" loading="lazy" />
+            <img class="carte-image" src={url(actu.data.coverImage)} alt="" loading="lazy" />
           )}
           <span class="discret">{actu.data.date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
           <span class="carte-titre">{actu.data.title}</span>

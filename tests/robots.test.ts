@@ -11,8 +11,8 @@ describe('robots.txt', () => {
 });
 
 describe('adresse du site', () => {
-  it('utilise l’adresse Netlify dans robots.txt et l’URL canonique', () => {
-    expect(readDistFile('robots.txt')).toContain('Sitemap: https://tranquil-mooncake-d1bdc5.netlify.app/sitemap.xml');
-    expect(readDistHtml('/tarifs')).toContain('<link rel="canonical" href="https://tranquil-mooncake-d1bdc5.netlify.app/tarifs"');
+  it('utilise l’adresse du domaine dans robots.txt et l’URL canonique', () => {
+    expect(readDistFile('robots.txt')).toContain('Sitemap: https://kyokushin-jutsu-eskrima-aubagne.fr/sitemap.xml');
+    expect(readDistHtml('/tarifs')).toContain('<link rel="canonical" href="https://kyokushin-jutsu-eskrima-aubagne.fr/tarifs"');
   });
 });

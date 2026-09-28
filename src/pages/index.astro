@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { creneaux, groupByJour } from '../data/planning';
@@ -24,13 +25,13 @@ const planningParJour = groupByJour(creneaux);
         tradition, pour adultes et enfants.
       </p>
       <div class="hero-actions">
-        <a class="cta" href="/contact">Essai gratuit</a>
-        <a class="lien-souligne" href="/dojo">Découvrir le dojo</a>
+        <a class="cta" href={url('/contact')}>Essai gratuit</a>
+        <a class="lien-souligne" href={url('/dojo')}>Découvrir le dojo</a>
       </div>
     </div>
     <div class="hero-visuel">
       <img
-        src="/ours-encre.png"
+        src={url('/ours-encre.png')}
         alt="Ours dressé devant une montagne, emblème du dojo"
         class="hero-image"
         width="664"
@@ -44,7 +45,7 @@ const planningParJour = groupByJour(creneaux);
     <div class="bloc-titre">
       <p class="numero">01 — <span lang="ja">稽古</span></p>
       <h2>Horaires</h2>
-      <a class="lien-souligne" href="/planning">Planning complet</a>
+      <a class="lien-souligne" href={url('/planning')}>Planning complet</a>
     </div>
     <ul class="lignes">
       {Object.entries(planningParJour).flatMap(([jour, creneauxDuJour]) =>
@@ -100,14 +101,14 @@ const planningParJour = groupByJour(creneaux);
     <div class="bloc-titre">
       <p class="numero">05 — <span lang="ja">便り</span></p>
       <h2>Actualités</h2>
-      <a class="lien-souligne" href="/actualites">Toutes les actualités</a>
+      <a class="lien-souligne" href={url('/actualites')}>Toutes les actualités</a>
     </div>
     <ul class="cartes">
       {dernieresActus.map((actu) => (
         <li>
-          <a href={`/actualites/${actu.slug}`}>
+          <a href={url(`/actualites/${actu.slug}`)}>
             {actu.data.coverImage && (
-              <img class="carte-image" src={actu.data.coverImage} alt="" loading="lazy" />
+              <img class="carte-image" src={url(actu.data.coverImage)} alt="" loading="lazy" />
             )}
             <span class="discret">{actu.data.date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
             <span class="carte-titre">{actu.data.title}</span>

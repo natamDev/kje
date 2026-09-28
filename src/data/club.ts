@@ -30,8 +30,8 @@ export const club = {
   telephoneInternational: '+33621482029',
   directeurPublication: 'Gérard Calenge',
   hebergeur: {
-    nom: 'Netlify, Inc.',
-    adresse: '101 2nd Street, San Francisco, CA 94105, États-Unis',
-    site: 'https://www.netlify.com',
+    nom: 'GitHub, Inc.',
+    adresse: '88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis',
+    site: 'https://github.com',
   },
 };

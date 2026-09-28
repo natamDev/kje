@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import type { Photo } from '../data/photos-dojo';
 
 export interface Props {
@@ -13,7 +14,7 @@ const { photos, label } = Astro.props;
     {photos.map((photo, i) => (
       <figure class="carrousel-diapo" aria-label={`${i + 1} sur ${photos.length}`}>
         <img
-          src={photo.src}
+          src={url(photo.src)}
           alt={photo.alt}
           width={photo.width}
           height={photo.height}

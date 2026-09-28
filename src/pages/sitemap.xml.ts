@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { url } from '../lib/url';
 import { getCollection } from 'astro:content';
 
 const staticRoutes = [
@@ -17,7 +18,7 @@ export const GET: APIRoute = async ({ site }) => {
   const routes = [...staticRoutes, ...actuRoutes];
 
   const urls = routes
-    .map((route) => `  <url><loc>${new URL(route, site)}</loc></url>`)
+    .map((route) => `  <url><loc>${new URL(url(route), site)}</loc></url>`)
     .join('\n');
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;

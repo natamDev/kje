@@ -31,13 +31,23 @@ pour chaque page. Il n'y a pas de tests unitaires exhaustifs page par page :
 la vérification principale reste le build réussi et une revue visuelle
 manuelle (voir le spec).
 
-## Déploiement (Netlify)
+## Déploiement (GitHub Pages)
 
-1. Connecter ce dépôt Git à un nouveau site Netlify.
-2. Build command : `npm run build`
-3. Publish directory : `dist`
-4. Adresse actuelle : https://tranquil-mooncake-d1bdc5.netlify.app. Une fois le nom de domaine définitif choisi, le configurer dans
-   Netlify et mettre à jour `site` dans `astro.config.mjs`.
+Le code source est sur la branche `dev` ; la branche `master` contient
+uniquement le site construit (contenu de `dist/`), servi par GitHub Pages.
+
+1. Sur `dev` : `npm run build`
+2. Remplacer le contenu de `master` par celui de `dist/` (fichier `.nojekyll` compris,
+   sinon GitHub ignore le dossier `_astro`), commiter et pousser.
+3. Adresse actuelle : https://natamdev.github.io/kje (réglages par défaut de
+   `astro.config.mjs` : `site` = `https://natamdev.github.io`, `base` = `/kje`).
+4. Passage au nom de domaine https://kyokushin-jutsu-eskrima-aubagne.fr :
+   dans `astro.config.mjs`, mettre `SITE_URL` à cette adresse et `BASE_PATH` à `/`,
+   ajouter `public/CNAME` contenant `kyokushin-jutsu-eskrima-aubagne.fr`,
+   puis configurer le domaine dans les réglages Pages du dépôt.
+
+Les liens internes passent par `url()` (`src/lib/url.ts`), qui ajoute le `base` :
+ne pas écrire de chemin `/...` en dur dans les pages.
 
 En cas de changement d'hébergeur, mettre aussi à jour `hebergeur` dans
 `src/data/club.ts` (affiché dans les mentions légales).
@@ -45,4 +55,3 @@ En cas de changement d'hébergeur, mettre aussi à jour `hebergeur` dans
 ## Contenu à fournir avant mise en ligne
 
 - Nom de famille et grade d'Hélène (`src/pages/dojo.astro`, liste `instructeurs`)
-- Nom de domaine définitif

@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { saison, coursEssai, cotisations, fraisAnnuels, equipement, libellePeriode, formatPrix } from '../data/tarifs';
 ---
@@ -10,7 +11,7 @@ import { saison, coursEssai, cotisations, fraisAnnuels, equipement, libellePerio
 
   <p class="accroche">
     {coursEssai.label} : <strong>{formatPrix(coursEssai.prixCentimes)}</strong>.
-    <a href="/contact">Contactez-nous</a> pour venir essayer un cours.
+    <a href={url('/contact')}>Contactez-nous</a> pour venir essayer un cours.
   </p>
 
   <section>

@@ -55,6 +55,6 @@ describe('données structurées', () => {
 describe('image de partage', () => {
   it('utilise logo.png, qui existe, pour og:image', () => {
     const html = readDistHtml('/');
-    expect(html).toContain('<meta property="og:image" content="https://tranquil-mooncake-d1bdc5.netlify.app/logo.png"');
+    expect(html).toContain('<meta property="og:image" content="https://kyokushin-jutsu-eskrima-aubagne.fr/logo.png"');
   });
 });
