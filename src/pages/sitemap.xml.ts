@@ -14,11 +14,16 @@ const staticRoutes = [
 
 export const GET: APIRoute = async ({ site }) => {
   const actus = await getCollection('actualites');
-  const actuRoutes = actus.map((actu) => `/actualites/${actu.slug}`);
-  const routes = [...staticRoutes, ...actuRoutes];
+  const routes: { path: string; lastmod?: Date }[] = [
+    ...staticRoutes.map((path) => ({ path })),
+    ...actus.map((actu) => ({ path: `/actualites/${actu.slug}`, lastmod: actu.data.date })),
+  ];
 
   const urls = routes
-    .map((route) => `  <url><loc>${new URL(url(route), site)}</loc></url>`)
+    .map(({ path, lastmod }) => {
+      const date = lastmod ? `<lastmod>${lastmod.toISOString().slice(0, 10)}</lastmod>` : '';
+      return `  <url><loc>${new URL(url(path), site)}</loc>${date}</url>`;
+    })
     .join('\n');
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;

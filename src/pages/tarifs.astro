@@ -2,10 +2,12 @@
 import { url } from '../lib/url';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { saison, coursEssai, cotisations, fraisAnnuels, equipement, libellePeriode, formatPrix } from '../data/tarifs';
+
+const prixMin = formatPrix(Math.min(...cotisations.map((t) => t.prixCentimes)));
 ---
 <BaseLayout
-  title="Tarifs"
-  description="Tarifs et cotisations du dojo pour les cours de Kyokushin et Jutsu Eskrima."
+  title={`Tarifs saison ${saison}`}
+  description={`Tarifs ${saison} du club de karaté Kyokushin Jutsu Eskrima à Aubagne : cotisation dès ${prixMin} par mois, licence, équipement et cours d’essai gratuit.`}
 >
   <h1>Tarifs saison {saison}</h1>
 

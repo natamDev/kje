@@ -4,21 +4,80 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import { club } from '../data/club';
+import { creneaux, plagesParJour } from '../data/planning';
 
 export interface Props {
   title: string;
   description?: string;
+  // Page d'actualité : balisage NewsArticle et og:type article.
+  article?: { publication: Date; image?: string };
 }
 
-const {
-  title,
-  description = 'Dojo Kyokushin et Jutsu Eskrima : cours d’arts martiaux pour enfants et adultes, planning, tarifs et actualités du club.',
-} = Astro.props;
+const descriptionClub =
+  'Club de karaté Kyokushin Jutsu Eskrima à Aubagne : cours d’arts martiaux pour enfants et adultes, planning, tarifs et actualités du dojo.';
+
+const { title, description = descriptionClub, article } = Astro.props;
 
 const pageTitle = `${title} — ${club.nom}`;
 // build.format 'file' donne /tarifs.html : l'URL publique servie est /tarifs.
 const canonicalURL = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site);
 const ogImageURL = new URL(url('/logo.png'), Astro.site);
+const siteURL = new URL(url('/'), Astro.site);
+const clubId = `${siteURL}#club`;
+
+const joursSchema: Record<string, string> = {
+  Lundi: 'Monday', Mardi: 'Tuesday', Mercredi: 'Wednesday', Jeudi: 'Thursday',
+  Vendredi: 'Friday', Samedi: 'Saturday', Dimanche: 'Sunday',
+};
+
+const clubLd = {
+  '@type': ['SportsActivityLocation', 'SportsClub'],
+  '@id': clubId,
+  name: club.nom,
+  legalName: club.nomLegal,
+  description: descriptionClub,
+  url: siteURL,
+  logo: ogImageURL,
+  image: ogImageURL,
+  foundingDate: club.dateCreation,
+  identifier: {
+    '@type': 'PropertyValue',
+    propertyID: 'SIREN',
+    value: club.siren.replace(/ /g, ''),
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: club.lieuCours.rue,
+    postalCode: club.lieuCours.codePostal,
+    addressLocality: club.lieuCours.ville,
+    addressCountry: club.lieuCours.pays,
+  },
+  geo: { '@type': 'GeoCoordinates', ...club.geo },
+  openingHoursSpecification: plagesParJour(creneaux).map((p) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: `https://schema.org/${joursSchema[p.jour]}`,
+    opens: p.debut,
+    closes: p.fin,
+  })),
+  sameAs: [club.ficheGoogle],
+  telephone: club.telephoneInternational,
+  email: club.email,
+};
+
+const articleLd = article && {
+  '@type': 'NewsArticle',
+  headline: title,
+  datePublished: article.publication.toISOString().slice(0, 10),
+  image: article.image ? new URL(url(article.image), Astro.site) : ogImageURL,
+  mainEntityOfPage: canonicalURL,
+  author: { '@id': clubId },
+  publisher: { '@id': clubId },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': articleLd ? [clubLd, articleLd] : [clubLd],
+};
 ---
 <html lang="fr">
   <head>
@@ -33,32 +92,13 @@ const ogImageURL = new URL(url('/logo.png'), Astro.site);
     <link rel="apple-touch-icon" href={url('/symbole_rouge_centre.png')} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImageURL} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'LocalBusiness',
-      name: club.nom,
-      legalName: club.nomLegal,
-      description,
-      image: ogImageURL,
-      foundingDate: club.dateCreation,
-      identifier: {
-        '@type': 'PropertyValue',
-        propertyID: 'SIREN',
-        value: club.siren.replace(/ /g, ''),
-      },
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: club.lieuCours.rue,
-        postalCode: club.lieuCours.codePostal,
-        addressLocality: club.lieuCours.ville,
-        addressCountry: club.lieuCours.pays,
-      },
-      telephone: club.telephoneInternational,
-      email: club.email,
-    })} />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content={club.nom} />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
     <title>{pageTitle}</title>
   </head>
   <body>

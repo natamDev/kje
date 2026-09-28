@@ -23,4 +23,11 @@ describe('sitemap.xml', () => {
     expect(content).toContain('<loc>https://kyokushin-jutsu-eskrima-aubagne.fr/actualites/2026-09-16-remise-des-ceintures</loc>');
     expect(content).toContain('<loc>https://kyokushin-jutsu-eskrima-aubagne.fr/actualites/2026-09-05-forum-des-associations</loc>');
   });
+
+  it('date les actualités avec lastmod', () => {
+    const content = readDistFile('sitemap.xml');
+    expect(content).toContain(
+      '<url><loc>https://kyokushin-jutsu-eskrima-aubagne.fr/actualites/2026-09-16-remise-des-ceintures</loc><lastmod>2026-09-16</lastmod></url>',
+    );
+  });
 });

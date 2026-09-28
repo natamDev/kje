@@ -21,6 +21,10 @@ export const club = {
     ville: 'Aubagne',
     pays: 'FR',
   },
+  // Coordonnées du 206 chemin du Merlançon (Base Adresse Nationale).
+  geo: { latitude: 43.284228, longitude: 5.579767 },
+  // Fiche Google Business Profile du dojo (identifiant Knowledge Graph).
+  ficheGoogle: 'https://www.google.com/search?kgmid=/g/11thg9l5zr',
   // Recherche Google Maps qui pointe sur la fiche du dojo.
   rechercheCarte: 'Kyokushin Jutsu Eskrima Aubagne, 206 Chem. du Merlançon, Chem. du Qur des Vaux, 13400 Aubagne',
   ficheOfficielle:

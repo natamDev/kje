@@ -28,3 +28,12 @@ export function groupByJour(items: Creneau[]): Record<string, Creneau[]> {
   }
   return grouped;
 }
+
+// Plage horaire de chaque jour de cours (du premier début à la dernière fin), dans l'ordre de la semaine.
+export function plagesParJour(items: Creneau[]): { jour: Creneau['jour']; debut: string; fin: string }[] {
+  return Object.entries(groupByJour(items)).map(([jour, forDay]) => ({
+    jour: jour as Creneau['jour'],
+    debut: forDay[0].heureDebut,
+    fin: forDay.map((c) => c.heureFin).sort().at(-1)!,
+  }));
+}

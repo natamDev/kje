@@ -62,7 +62,7 @@ describe('nom du club', () => {
   it('affiche « Kyokushin Jutsu Escrima Aubagne » dans le header et le titre', () => {
     const html = readDistHtml('/planning');
     expect(html).toMatch(/<header>[\s\S]*Kyokushin Jutsu Escrima Aubagne[\s\S]*<\/header>/);
-    expect(html).toContain('<title>Planning — Kyokushin Jutsu Escrima Aubagne</title>');
+    expect(html).toContain('<title>Horaires des cours de karaté — Kyokushin Jutsu Escrima Aubagne</title>');
     expect(html).not.toContain('Kyokushin + Jujutsu Eskrima');
   });
 });

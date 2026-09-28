@@ -17,7 +17,8 @@ const { title, date, medias = [], video } = actu.data;
 ---
 <BaseLayout
   title={title}
-  description={`Actualité du dojo : ${title}.`}
+  description={`Actualité du club de karaté d’Aubagne : ${title}.`}
+  article={{ publication: date, image: actu.data.coverImage ?? medias[0] }}
 >
   <article class="actu">
     <p class="discret">{date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</p>

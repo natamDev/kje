@@ -7,8 +7,8 @@ const actus = (await getCollection('actualites'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 <BaseLayout
-  title="Actualités"
-  description="Toutes les actualités du dojo : stages, événements et vie du club."
+  title="Actualités du club"
+  description="Les actualités du club de karaté Kyokushin Jutsu Eskrima d’Aubagne : passages de grade, remises de ceintures, stages, forums et vie du dojo."
 >
   <h1>Actualités</h1>
   <ul class="cartes">
